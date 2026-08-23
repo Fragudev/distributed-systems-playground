@@ -5,7 +5,7 @@ over a shared, generic order-processing domain. Built as technical portfolio evi
 Design interview preparation — each example is meant to answer *why the pattern exists*, not just
 *how to implement it*.
 
-Status: **1 of 6 examples done.** See [docs/adr](docs/adr) for the decisions behind this structure and
+Status: **2 of 6 examples done.** See [docs/adr](docs/adr) for the decisions behind this structure and
 the planning document that preceded it.
 
 ## Examples
@@ -13,7 +13,7 @@ the planning document that preceded it.
 | Example | Teaches | Status |
 |---|---|---|
 | [synchronous-processing](examples/synchronous-processing) | Validation, transaction boundaries, synchronous response semantics — the baseline every other example is compared against | ✅ done |
-| outbox | Transactional outbox vs. broken dual-write | planned |
+| [outbox](examples/outbox) | Transactional outbox vs. broken dual-write, at-least-once delivery | ✅ done |
 | kafka-order-processing | Consumer groups, partitioning, ordering, retry/backoff, DLT, replay | planned |
 | rabbitmq-order-processing | Same domain over exchanges/queues, native DLX/TTL — direct comparison with Kafka | planned |
 | resilience | Circuit breakers, bulkheads, timeouts, backpressure, graceful degradation | planned |

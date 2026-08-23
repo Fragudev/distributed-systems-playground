@@ -23,6 +23,7 @@
   -->
   <modules>
     <module>examples/synchronous-processing</module>
+    <module>examples/outbox</module>
   </modules>
 
   <properties>

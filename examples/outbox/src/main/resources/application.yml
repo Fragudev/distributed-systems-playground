@@ -1,0 +1,40 @@
+# Same shared-Postgres-instance rationale as synchronous-processing (see its application.yml):
+# one schema per example so their tables never collide.
+spring:
+  application:
+    name: outbox
+  datasource:
+    url: jdbc:postgresql://localhost:${DSPLAYGROUND_POSTGRES_PORT:5432}/dsplayground
+    username: dsplayground
+    password: dsplayground
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        default_schema: outbox
+  flyway:
+    schemas: outbox
+    default-schema: outbox
+  mvc:
+    problemdetails:
+      enabled: true
+  kafka:
+    bootstrap-servers: localhost:${DSPLAYGROUND_KAFKA_PORT:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+
+server:
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
