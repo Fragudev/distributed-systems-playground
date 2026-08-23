@@ -1,0 +1,103 @@
+docs/diagrams/outbox.md
+  s_97f2827833aa6e::t_a98b1fd0961026 1-49
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/api/OrderController.java
+  s_8ca842344072f2::t_b309ba42eeb2b6 1-41
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/api/OrderLineRequest.java
+  s_8ca842344072f2::t_d55d447488e748 1-9
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/naive/NaiveOrderService.java
+  s_8ca842344072f2::t_031f247229d4f5 1-68
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/order/Order.java
+  s_8ca842344072f2::t_bdef68a911ebd3 1-92
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/order/OrderCreatedPayload.java
+  s_8ca842344072f2::t_2590884103ed8c 1-21
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/order/OrderService.java
+  s_8ca842344072f2::t_7829f8602baf45 1-66
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/order/OrderStatus.java
+  s_8ca842344072f2::t_9adb96a5b841f8 1-9
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/outbox/EventEnvelope.java
+  s_8ca842344072f2::t_bc4d20cd003521 1-27
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/outbox/OutboxRelay.java
+  s_8ca842344072f2::t_96a0ed24d4cd8e 1-54
+examples/outbox/src/main/resources/db/migration/V1__create_schema.sql
+  s_171452bc32002f::t_fcfe391dd1abc2 1-35
+examples/outbox/src/test/java/dev/fgutierrez/dsplayground/outbox/outbox/OutboxFailureTest.java
+  s_8ca842344072f2::t_8ad0f654e2e615 1-81
+examples/outbox/src/test/java/dev/fgutierrez/dsplayground/outbox/outbox/OutboxRelayTest.java
+  s_8ca842344072f2::t_367cde6713022f 1-42
+examples/outbox/src/test/java/dev/fgutierrez/dsplayground/outbox/support/PostgresAndKafkaIntegrationTest.java
+  s_8ca842344072f2::t_33b729032a8237 1-74
+.github/workflows/ci.yml
+  s_8ca842344072f2::t_cc1307d4027898 19-29
+README.md
+  s_8ca842344072f2::t_c9aee06b6c04d5 8,16
+docker-compose.yml
+  s_8ca842344072f2::t_ce5a0eea0e89cb 41-47,49-50,63
+docs/adr/0003-transactional-outbox.md
+  s_8ca842344072f2::t_3122ef3881e051 1-48
+examples/outbox/README.md
+  s_8ca842344072f2::t_362251f7c1e917 1-115
+examples/outbox/pom.xml
+  s_8ca842344072f2::t_d570438b0f2059 1-91
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/OutboxApplication.java
+  s_8ca842344072f2::t_5f0dce7387df5d 1-21
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/api/CreateOrderRequest.java
+  s_8ca842344072f2::t_77582e4c7d5ba0 1-9
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/api/OrderLineResponse.java
+  s_8ca842344072f2::t_e701d8dfa9b0b8 1-11
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/api/OrderResponse.java
+  s_8ca842344072f2::t_0ea74b10f06390 1-26
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/order/OrderLine.java
+  s_8ca842344072f2::t_3b80e934489fe4 1-60
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/order/OrderRepository.java
+  s_8ca842344072f2::t_022d6aeb92320a 1-6
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/outbox/EventPublishException.java
+  s_8ca842344072f2::t_a2067663b83c1f 1-8
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/outbox/EventPublisher.java
+  s_8ca842344072f2::t_8bf73fc94e7128 1-10
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/outbox/KafkaEventPublisher.java
+  s_8ca842344072f2::t_a9c34b80d74dd9 1-32
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/outbox/OutboxEvent.java
+  s_8ca842344072f2::t_b6e755d120093d 1-72
+examples/outbox/src/main/java/dev/fgutierrez/dsplayground/outbox/outbox/OutboxEventRepository.java
+  s_8ca842344072f2::t_e0019111df3148 1-10
+examples/outbox/src/main/resources/application.yml
+  s_8ca842344072f2::t_0dc1700130c351 1-40
+examples/outbox/src/test/java/dev/fgutierrez/dsplayground/outbox/naive/NaiveDualWriteFailureTest.java
+  s_8ca842344072f2::t_e630515bae7667 1-68
+examples/outbox/src/test/java/dev/fgutierrez/dsplayground/outbox/support/FlakyEventPublisher.java
+  s_8ca842344072f2::t_0aaa1dfa5cf3d2 1-33
+pom.xml
+  s_8ca842344072f2::t_6e606054016e11 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "986840f145db69dde846c79ee7e95271f5f4bf41",
+  "prompts": {},
+  "sessions": {
+    "s_171452bc32002f": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a02ffe-4cef-7528-90f5-2f1b3ea1c2f2",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_8ca842344072f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4db8a879-00ae-4699-b479-6c9220e502b3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_97f2827833aa6e": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a0300e-77b2-712a-aa00-8b4c1da15baa",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    }
+  }
+}
