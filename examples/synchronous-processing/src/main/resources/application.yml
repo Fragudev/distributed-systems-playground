@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: synchronous-processing
+  datasource:
+    url: jdbc:postgresql://localhost:${DSPLAYGROUND_POSTGRES_PORT:5432}/dsplayground
+    username: dsplayground
+    password: dsplayground
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    schemas: synchronous_processing
+    default-schema: synchronous_processing
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always

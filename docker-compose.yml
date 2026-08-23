@@ -1,0 +1,82 @@
+name: dsplayground
+
+# One compose file, activated via profiles so no example has to drag in
+# infrastructure it doesn't need. See docs/adr/0001-repo-structure.md.
+#
+#   docker compose --profile sync up          # synchronous-processing, outbox
+#   docker compose --profile kafka up         # kafka-order-processing
+#   docker compose --profile rabbitmq up      # rabbitmq-order-processing
+#   docker compose --profile saga up          # saga-order-fulfillment (reuses kafka)
+#   docker compose --profile observability up # add OTel/Prometheus/Tempo/Grafana to any of the above
+#
+# Host ports default to the usual values but are overridable (e.g. via a local .env, see
+# .env.example) in case something else on your machine already holds one of them.
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    profiles: [sync, kafka, rabbitmq, resilience, saga]
+    environment:
+      POSTGRES_USER: dsplayground
+      POSTGRES_PASSWORD: dsplayground
+      POSTGRES_DB: dsplayground
+    ports:
+      - "${DSPLAYGROUND_POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dsplayground"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  kafka:
+    image: apache/kafka:3.9.0
+    profiles: [kafka, saga]
+    ports:
+      - "${DSPLAYGROUND_KAFKA_PORT:-9092}:9092"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    profiles: [kafka, saga]
+    ports:
+      - "${DSPLAYGROUND_KAFKA_UI_PORT:-8090}:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+    depends_on:
+      - kafka
+
+  rabbitmq:
+    image: rabbitmq:4-management-alpine
+    profiles: [rabbitmq]
+    ports:
+      - "${DSPLAYGROUND_RABBITMQ_PORT:-5672}:5672"
+      - "${DSPLAYGROUND_RABBITMQ_MGMT_PORT:-15672}:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  observability:
+    image: grafana/otel-lgtm:latest
+    profiles: [observability]
+    ports:
+      - "${DSPLAYGROUND_GRAFANA_PORT:-3000}:3000"    # Grafana
+      - "${DSPLAYGROUND_OTLP_GRPC_PORT:-4317}:4317"  # OTLP gRPC
+      - "${DSPLAYGROUND_OTLP_HTTP_PORT:-4318}:4318"  # OTLP HTTP
+
+volumes:
+  postgres-data:

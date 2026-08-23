@@ -1,0 +1,3 @@
+-- Phase 0 walking skeleton: proves the Flyway/Postgres wiring end to end.
+-- The real order-processing schema (orders, order_line) lands in phase 1
+-- together with the actual domain logic — see docs/adr/0001-repo-structure.md.
