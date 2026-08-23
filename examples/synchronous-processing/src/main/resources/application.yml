@@ -1,3 +1,5 @@
+# All examples share one Postgres container (see docker-compose.yml) rather than one each, to keep
+# local dev lightweight. Each example gets its own schema so their tables never collide.
 spring:
   application:
     name: synchronous-processing
@@ -9,9 +11,15 @@ spring:
     hibernate:
       ddl-auto: validate
     open-in-view: false
+    properties:
+      hibernate:
+        default_schema: synchronous_processing
   flyway:
     schemas: synchronous_processing
     default-schema: synchronous_processing
+  mvc:
+    problemdetails:
+      enabled: true
 
 server:
   port: 8081

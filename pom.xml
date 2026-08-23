@@ -28,6 +28,9 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>21</maven.compiler.release>
+    <!-- So Spring MVC can resolve @PathVariable/@RequestParam names via reflection without
+         every one needing an explicit @PathVariable("name"). -->
+    <maven.compiler.parameters>true</maven.compiler.parameters>
     <spring-boot.version>3.5.3</spring-boot.version>
     <testcontainers.version>1.20.4</testcontainers.version>
   </properties>
@@ -70,6 +73,17 @@
               without every contributor needing to know this.
             -->
             <argLine>-Dapi.version=1.45</argLine>
+            <!--
+              A second, separate Rancher Desktop quirk: a second Spring context opening its own
+              HikariCP pool against an already-running Testcontainers Postgres — reusing the same
+              forked JVM a prior test class already used one in — reliably gets ECONNREFUSED for
+              the DataSourceHealthIndicator until Hikari's connection-timeout is exhausted, even
+              though the container is genuinely healthy and the very first context to use it in
+              that JVM connects fine. A fresh fork per test class sidesteps whatever host-network
+              state this leaves behind; each example here only has a handful of test classes, so
+              the extra JVM startup cost is negligible.
+            -->
+            <reuseForks>false</reuseForks>
           </configuration>
         </plugin>
         <plugin>
