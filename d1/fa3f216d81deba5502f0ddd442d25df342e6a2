@@ -1,0 +1,73 @@
+.env.example
+  s_24993ec0f083a4::t_b38c1d94c2b5c7 1-12
+.mvn/wrapper/maven-wrapper.properties
+  s_8ca842344072f2::t_7ccb620945ddf5 1-19
+LICENSE
+  s_8ca842344072f2::t_3af9b11572d4fc 1-202
+examples/synchronous-processing/src/main/resources/application.yml
+  s_24993ec0f083a4::t_239eda8f7c23d3 1-26
+examples/synchronous-processing/src/test/java/dev/fgutierrez/dsplayground/syncprocessing/SynchronousProcessingApplicationTests.java
+  s_8ca842344072f2::t_9294da7ba50a72 1-40
+mvnw
+  s_8ca842344072f2::t_a84d7a083137c6 1-259
+mvnw.cmd
+  s_8ca842344072f2::t_6cb82a21416e80 1-149
+scripts/bootstrap.sh
+  s_8ca842344072f2::t_b5983e478f71a2 1-22
+scripts/inject-failure.sh
+  s_8ca842344072f2::t_767c28ed98f93b 1-17
+scripts/replay-dlq.sh
+  s_8ca842344072f2::t_8a7b10602b9a8e 1-7
+.github/workflows/ci.yml
+  s_8ca842344072f2::t_8e2c7f9ab1b601 1-18
+.gitignore
+  s_8ca842344072f2::t_dfe3b7c2be9707 1-9
+.mvn/maven.config
+  s_8ca842344072f2::t_333e757e74c074 1-2
+.mvn/settings.xml
+  s_8ca842344072f2::t_ae8f5c95b0af77 1-11
+README.md
+  s_8ca842344072f2::t_89791517442961 1-80
+docker-compose.yml
+  s_8ca842344072f2::t_0a5a3118468699 1-82
+docs/adr/0001-repo-structure.md
+  s_8ca842344072f2::t_a027b0bf332970 1-35
+docs/adr/0002-duplicated-domain.md
+  s_8ca842344072f2::t_44eaf0399772f4 1-37
+docs/templates/example-readme.md
+  s_8ca842344072f2::t_a4f6b2704e86d5 1-46
+examples/synchronous-processing/pom.xml
+  s_8ca842344072f2::t_2c2b25622624a4 1-87
+examples/synchronous-processing/src/main/java/dev/fgutierrez/dsplayground/syncprocessing/SynchronousProcessingApplication.java
+  s_8ca842344072f2::t_81579e973b466a 1-12
+examples/synchronous-processing/src/main/resources/db/migration/V1__baseline.sql
+  s_8ca842344072f2::t_c581f557deba22 1-3
+pom.xml
+  s_8ca842344072f2::t_d37b0a5967ac93 1-101
+scripts/run-example.sh
+  s_8ca842344072f2::t_3281b630795f55 1-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d1fa3f216d81deba5502f0ddd442d25df342e6a2",
+  "prompts": {},
+  "sessions": {
+    "s_24993ec0f083a4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5f88a8ec-e8f2-4c12-b96a-31fd4abf292b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_8ca842344072f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4db8a879-00ae-4699-b479-6c9220e502b3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    }
+  }
+}
