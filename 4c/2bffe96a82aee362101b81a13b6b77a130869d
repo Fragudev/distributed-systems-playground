@@ -1,0 +1,29 @@
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/api/OrderController.java
+  s_404c5ea073f7bb::t_fea7d630524020 42,47-62
+examples/resilience/src/test/java/dev/fgutierrez/dsplayground/resilience/api/OrderApiResilienceTest.java
+  s_8ca842344072f2::t_259b9fcf129c1a 16,19,35-41,46-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "4c2bffe96a82aee362101b81a13b6b77a130869d",
+  "prompts": {},
+  "sessions": {
+    "s_404c5ea073f7bb": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a02a7a-a0bf-739c-a4d3-c3a3c3ca3fa5",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_8ca842344072f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4db8a879-00ae-4699-b479-6c9220e502b3",
+        "model": "unknown"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    }
+  }
+}
