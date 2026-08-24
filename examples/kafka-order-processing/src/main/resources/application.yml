@@ -1,0 +1,47 @@
+# Same shared-Postgres-instance rationale as the other examples: one schema each so their tables
+# never collide.
+spring:
+  application:
+    name: kafka-order-processing
+  datasource:
+    url: jdbc:postgresql://localhost:${DSPLAYGROUND_POSTGRES_PORT:5432}/dsplayground
+    username: dsplayground
+    password: dsplayground
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        default_schema: kafka_order_processing
+  flyway:
+    schemas: kafka_order_processing
+    default-schema: kafka_order_processing
+  mvc:
+    problemdetails:
+      enabled: true
+  kafka:
+    bootstrap-servers: localhost:${DSPLAYGROUND_KAFKA_PORT:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # A consumer group's first-ever connection has no committed offset yet; without this it
+      # would start from the tail and miss every order.created.v1 published before it came up —
+      # surprising the first time you run this example fresh.
+      auto-offset-reset: earliest
+
+server:
+  port: 8083
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
