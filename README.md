@@ -1,5 +1,7 @@
 # Distributed Systems Playground
 
+[![CI](https://github.com/Fragudev/distributed-systems-playground/actions/workflows/ci.yml/badge.svg)](https://github.com/Fragudev/distributed-systems-playground/actions/workflows/ci.yml)
+
 A collection of focused, production-quality examples demonstrating distributed-systems patterns
 over a shared, generic order-processing domain. Built as technical portfolio evidence and System
 Design interview preparation — each example is meant to answer *why the pattern exists*, not just
