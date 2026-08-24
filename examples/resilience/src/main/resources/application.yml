@@ -1,0 +1,70 @@
+# Same shared-Postgres-instance rationale as the other examples: one schema so its tables never
+# collide with a sibling example's.
+spring:
+  application:
+    name: resilience
+  datasource:
+    url: jdbc:postgresql://localhost:${DSPLAYGROUND_POSTGRES_PORT:5432}/dsplayground
+    username: dsplayground
+    password: dsplayground
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        default_schema: resilience
+  flyway:
+    schemas: resilience
+    default-schema: resilience
+  mvc:
+    problemdetails:
+      enabled: true
+
+server:
+  port: 8085
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,circuitbreakers,circuitbreakerevents
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+  otlp:
+    metrics:
+      export:
+        url: http://localhost:${DSPLAYGROUND_OTLP_HTTP_PORT:4318}/v1/metrics
+        step: 10s
+
+resilience:
+  shipping-simulator:
+    slow-delay-ms: 2000
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      shipping:
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+  bulkhead:
+    instances:
+      shipping:
+        core-thread-pool-size: 2
+        max-thread-pool-size: 4
+        queue-capacity: 2
+  timelimiter:
+    instances:
+      shipping:
+        # Comfortably above a NORMAL call, comfortably below the simulator's SLOW delay (2s
+        # above) — the gap this example's failure-mode tests rely on to trigger a timeout
+        # deterministically rather than racing the clock.
+        timeout-duration: 500ms
