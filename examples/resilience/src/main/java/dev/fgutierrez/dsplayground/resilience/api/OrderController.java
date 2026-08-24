@@ -39,9 +39,25 @@ public class OrderController {
     // the time this call happens, so a slow or failing carrier never holds a DB connection open —
     // and can't roll back an order that already exists.
     Order created = orderService.createOrder(request.customerId(), lines);
-    ShippingConfirmation confirmation = shippingGateway.requestShipment(created.getId()).join();
+    ShippingConfirmation confirmation = requestShipmentGracefully(created.getId());
     return ResponseEntity.created(URI.create("/api/v1/orders/" + created.getId()))
         .body(OrderResponse.from(created, confirmation.status()));
+  }
+
+  /**
+   * ResilientShippingGateway's own fallbackMethod only catches what reaches the CircuitBreaker's
+   * instrumentation — a ThreadPoolBulkhead rejection (queue genuinely full under concurrent load)
+   * is thrown synchronously by the outer Bulkhead aspect, before the CircuitBreaker aspect (and
+   * hence its fallback) is ever entered, and surfaced a real 500 here under load. This is the
+   * actual boundary where "no request ever fails outright" has to be guaranteed, regardless of
+   * which Resilience4j aspect a given failure mode happens to originate from.
+   */
+  private ShippingConfirmation requestShipmentGracefully(UUID orderId) {
+    try {
+      return shippingGateway.requestShipment(orderId).join();
+    } catch (RuntimeException e) {
+      return ShippingConfirmation.pending();
+    }
   }
 
   @GetMapping("/{id}")
