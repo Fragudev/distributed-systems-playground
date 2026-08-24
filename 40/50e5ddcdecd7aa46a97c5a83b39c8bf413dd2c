@@ -1,0 +1,105 @@
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/api/CreateOrderRequest.java
+  s_8ca842344072f2::t_af55fa7fc4eb47 1-9
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/api/OrderController.java
+  s_8ca842344072f2::t_6819cf2687151b 1-41
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/api/OrderLineRequest.java
+  s_8ca842344072f2::t_64722d07e44861 1-9
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/api/OrderLineResponse.java
+  s_8ca842344072f2::t_186816ae9a8050 1-11
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/api/OrderResponse.java
+  s_8ca842344072f2::t_52a35512d49856 1-26
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/config/KafkaConsumerConfig.java
+  s_8ca842344072f2::t_0ce8639a227273 1-57
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/IncomingOrderCreatedEvent.java
+  s_8ca842344072f2::t_448e6431103c57 1-24
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/InventoryAvailabilityChecker.java
+  s_8ca842344072f2::t_38f8f902793795 1-12
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/InventoryEventListener.java
+  s_8ca842344072f2::t_9fcb0aac956aac 1-56
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/NotificationEventListener.java
+  s_8ca842344072f2::t_60c1e877d9cc63 1-40
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/PaymentEventListener.java
+  s_8ca842344072f2::t_6e1e1a074449c8 1-40
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/ProcessedEventId.java
+  s_8ca842344072f2::t_bf44e642512322 1-45
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/order/Order.java
+  s_8ca842344072f2::t_072499c4eb0034 1-92
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/order/OrderCreatedPayload.java
+  s_8ca842344072f2::t_bf3328ff05b690 1-21
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/order/OrderLine.java
+  s_8ca842344072f2::t_c66e6fa04c4485 1-60
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/order/OrderRepository.java
+  s_8ca842344072f2::t_2a582d0ff3bd61 1-6
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/order/OrderService.java
+  s_8ca842344072f2::t_23d75b95d15375 1-66
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/order/OrderStatus.java
+  s_8ca842344072f2::t_5cb9c008d477a9 1-9
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/outbox/EventEnvelope.java
+  s_8ca842344072f2::t_138a34cfba8ef3 1-27
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/outbox/EventPublishException.java
+  s_8ca842344072f2::t_af5404a8679959 1-8
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/outbox/EventPublisher.java
+  s_8ca842344072f2::t_3fa608b507cf77 1-10
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/outbox/KafkaEventPublisher.java
+  s_8ca842344072f2::t_531987c7cda661 1-32
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/outbox/OutboxEvent.java
+  s_8ca842344072f2::t_d46218c940f51e 1-72
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/outbox/OutboxEventRepository.java
+  s_8ca842344072f2::t_609c0519225d99 1-10
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/outbox/OutboxRelay.java
+  s_8ca842344072f2::t_936cc7b72a7432 1-54
+examples/kafka-order-processing/src/test/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/ConsumerGroupsTest.java
+  s_8ca842344072f2::t_3447c7cca1002a 1-98
+examples/kafka-order-processing/src/test/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/PartitioningTest.java
+  s_8ca842344072f2::t_c1bfb8325e6c3b 1-55
+examples/kafka-order-processing/src/test/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/PoisonMessageAndReplayTest.java
+  s_8ca842344072f2::t_784728c5cef1b8 1-111
+examples/kafka-order-processing/src/test/java/dev/fgutierrez/dsplayground/kafkaorders/support/PostgresAndKafkaIntegrationTest.java
+  s_8ca842344072f2::t_b28371d5085599 1-100
+.github/workflows/ci.yml
+  s_8ca842344072f2::t_b453e49e429d76 30-40
+README.md
+  s_8ca842344072f2::t_25bb3c65defa03 8,17
+docs/adr/0004-at-least-once-delivery.md
+  s_8ca842344072f2::t_59505a1dbebc90 1-37
+docs/adr/0005-idempotent-consumers.md
+  s_8ca842344072f2::t_38990189680983 1-48
+docs/diagrams/kafka-order-processing.md
+  s_8ca842344072f2::t_c3b069d0ee1561 1-36
+examples/kafka-order-processing/README.md
+  s_8ca842344072f2::t_05c1e55678891b 1-120
+examples/kafka-order-processing/pom.xml
+  s_8ca842344072f2::t_4271f185c5b8d6 1-96
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/KafkaOrderProcessingApplication.java
+  s_8ca842344072f2::t_c593c7c1a0907d 1-21
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/AlwaysAvailableInventoryChecker.java
+  s_8ca842344072f2::t_9454ced1cda000 1-12
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/ProcessedEvent.java
+  s_8ca842344072f2::t_65ac6a2298fbf4 1-38
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/ProcessedEventRepository.java
+  s_8ca842344072f2::t_61d0bca0560681 1-10
+examples/kafka-order-processing/src/main/resources/application.yml
+  s_8ca842344072f2::t_af3b7f1b1ea046 1-47
+examples/kafka-order-processing/src/main/resources/db/migration/V1__create_schema.sql
+  s_8ca842344072f2::t_066a03c113866a 1-40
+pom.xml
+  s_8ca842344072f2::t_8a096356636f61 27
+scripts/replay-dlq.sh
+  s_8ca842344072f2::t_326301ad78f683 2-8,11-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "4050e5ddcdecd7aa46a97c5a83b39c8bf413dd2c",
+  "prompts": {},
+  "sessions": {
+    "s_8ca842344072f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4db8a879-00ae-4699-b479-6c9220e502b3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    }
+  }
+}
