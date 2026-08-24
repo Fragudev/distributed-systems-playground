@@ -17,12 +17,17 @@ public class PaymentEventListener {
   static final String CONSUMER_GROUP = "payment-service";
 
   private final ProcessedEventRepository processedEventRepository;
+  private final ProcessingMetrics metrics;
   private final ObjectMapper objectMapper;
   private final Clock clock;
 
   public PaymentEventListener(
-      ProcessedEventRepository processedEventRepository, ObjectMapper objectMapper, Clock clock) {
+      ProcessedEventRepository processedEventRepository,
+      ProcessingMetrics metrics,
+      ObjectMapper objectMapper,
+      Clock clock) {
     this.processedEventRepository = processedEventRepository;
+    this.metrics = metrics;
     this.objectMapper = objectMapper;
     this.clock = clock;
   }
@@ -32,9 +37,11 @@ public class PaymentEventListener {
     IncomingOrderCreatedEvent event = IncomingOrderCreatedEvent.parse(payload, objectMapper);
     ProcessedEventId id = new ProcessedEventId(CONSUMER_GROUP, event.eventId());
     if (processedEventRepository.existsById(id)) {
+      metrics.recordDuplicate(CONSUMER_GROUP);
       return;
     }
     processedEventRepository.save(
         new ProcessedEvent(CONSUMER_GROUP, event.eventId(), Instant.now(clock)));
+    metrics.recordProcessed(CONSUMER_GROUP);
   }
 }

@@ -67,6 +67,12 @@ services:
   rabbitmq:
     image: rabbitmq:4-management-alpine
     profiles: [rabbitmq]
+    environment:
+      # The default guest/guest user can only authenticate from RabbitMQ's own idea of
+      # "localhost" (inside the container), so it always refuses connections through this
+      # published port — a real, commonly-hit footgun, not specific to this project's setup.
+      RABBITMQ_DEFAULT_USER: dsplayground
+      RABBITMQ_DEFAULT_PASS: dsplayground
     ports:
       - "${DSPLAYGROUND_RABBITMQ_PORT:-5672}:5672"
       - "${DSPLAYGROUND_RABBITMQ_MGMT_PORT:-15672}:15672"
@@ -83,6 +89,11 @@ services:
       - "${DSPLAYGROUND_GRAFANA_PORT:-3000}:3000"    # Grafana
       - "${DSPLAYGROUND_OTLP_GRPC_PORT:-4317}:4317"  # OTLP gRPC
       - "${DSPLAYGROUND_OTLP_HTTP_PORT:-4318}:4318"  # OTLP HTTP
+    volumes:
+      # The comparative dashboard both Kafka and RabbitMQ examples push metrics into — see
+      # docs/adr/0007-kafka-vs-rabbitmq.md.
+      - ./observability/grafana/provisioning/kafka-vs-rabbitmq.yaml:/otel-lgtm/grafana/conf/provisioning/dashboards/kafka-vs-rabbitmq.yaml:ro
+      - ./observability/grafana/dashboards/kafka-vs-rabbitmq.json:/otel-lgtm/grafana-dashboard-kafka-vs-rabbitmq.json:ro
 
 volumes:
   postgres-data:

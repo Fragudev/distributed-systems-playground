@@ -25,6 +25,7 @@
     <module>examples/synchronous-processing</module>
     <module>examples/outbox</module>
     <module>examples/kafka-order-processing</module>
+    <module>examples/rabbitmq-order-processing</module>
   </modules>
 
   <properties>

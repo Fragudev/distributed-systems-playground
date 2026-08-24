@@ -1,15 +1,15 @@
-package dev.fgutierrez.dsplayground.kafkaorders.consumer;
+package dev.fgutierrez.dsplayground.rabbitmqorders.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.fgutierrez.dsplayground.kafkaorders.outbox.OutboxRelay;
+import dev.fgutierrez.dsplayground.rabbitmqorders.config.RabbitConfig;
 import java.time.Clock;
 import java.time.Instant;
-import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
- * Third independent consumer group — see PaymentEventListener for why this is deliberately simple
- * rather than repeating InventoryEventListener's failure-injection seam.
+ * Third independent queue — see PaymentEventListener for why this is deliberately simple rather
+ * than repeating InventoryEventListener's DLX/retry machinery.
  */
 @Component
 public class NotificationEventListener {
@@ -32,7 +32,7 @@ public class NotificationEventListener {
     this.clock = clock;
   }
 
-  @KafkaListener(topics = OutboxRelay.TOPIC, groupId = CONSUMER_GROUP)
+  @RabbitListener(queues = RabbitConfig.NOTIFICATION_QUEUE)
   public void onOrderCreated(String payload) {
     IncomingOrderCreatedEvent event = IncomingOrderCreatedEvent.parse(payload, objectMapper);
     ProcessedEventId id = new ProcessedEventId(CONSUMER_GROUP, event.eventId());

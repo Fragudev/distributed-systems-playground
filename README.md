@@ -5,7 +5,7 @@ over a shared, generic order-processing domain. Built as technical portfolio evi
 Design interview preparation — each example is meant to answer *why the pattern exists*, not just
 *how to implement it*.
 
-Status: **3 of 6 examples done.** See [docs/adr](docs/adr) for the decisions behind this structure and
+Status: **4 of 6 examples done.** See [docs/adr](docs/adr) for the decisions behind this structure and
 the planning document that preceded it.
 
 ## Examples
@@ -15,9 +15,14 @@ the planning document that preceded it.
 | [synchronous-processing](examples/synchronous-processing) | Validation, transaction boundaries, synchronous response semantics — the baseline every other example is compared against | ✅ done |
 | [outbox](examples/outbox) | Transactional outbox vs. broken dual-write, at-least-once delivery | ✅ done |
 | [kafka-order-processing](examples/kafka-order-processing) | Consumer groups (fan-out), partitioning, idempotency, retry/backoff, DLT, replay | ✅ done |
-| rabbitmq-order-processing | Same domain over exchanges/queues, native DLX/TTL — direct comparison with Kafka | planned |
+| [rabbitmq-order-processing](examples/rabbitmq-order-processing) | Same domain over exchanges/queues, native DLX/TTL — direct comparison with Kafka | ✅ done |
 | resilience | Circuit breakers, bulkheads, timeouts, backpressure, graceful degradation | planned |
 | saga-order-fulfillment | Choreography-based saga, compensation, eventual consistency | planned |
+
+`kafka-order-processing` and `rabbitmq-order-processing` both feed a comparative Grafana dashboard
+with real, side-by-side data — see
+[docs/diagrams/kafka-vs-rabbitmq-dashboard.md](docs/diagrams/kafka-vs-rabbitmq-dashboard.md) and
+[docs/adr/0007-kafka-vs-rabbitmq.md](docs/adr/0007-kafka-vs-rabbitmq.md).
 
 Each example's own README follows [docs/templates/example-readme.md](docs/templates/example-readme.md):
 Problem → Naive solution → Improved solution → Architecture → Failure modes → Trade-offs → Testing →
@@ -43,6 +48,7 @@ and runs the Spring Boot app. `./scripts/bootstrap.sh` checks Docker/Java prereq
 │   ├── diagrams/         architecture diagrams referenced from each README
 │   ├── templates/        the example-README template every example follows
 │   └── adr/              architecture decision records
+├── observability/       Grafana dashboard + provisioning, mounted into the observability profile
 ├── scripts/             bootstrap, run-example, inject-failure, replay-dlq
 └── docker-compose.yml   one file, profile-gated per example
 ```

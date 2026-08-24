@@ -1,0 +1,102 @@
+{
+  "title": "Kafka vs RabbitMQ — order processing",
+  "uid": "kafka-vs-rabbitmq",
+  "editable": true,
+  "schemaVersion": 39,
+  "timezone": "browser",
+  "time": { "from": "now-1h", "to": "now" },
+  "refresh": "10s",
+  "tags": ["distributed-systems-playground"],
+  "panels": [
+    {
+      "id": 1,
+      "title": "Processed events by consumer group",
+      "description": "order_processing_events_total{outcome=\"processed\"} — same metric name and tags from kafka-order-processing and rabbitmq-order-processing, differentiated only by the broker label. See docs/adr/0007-kafka-vs-rabbitmq.md.",
+      "type": "barchart",
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "expr": "sum by (broker, consumer_group) (order_processing_events_total{outcome=\"processed\"})",
+          "legendFormat": "{{broker}} / {{consumer_group}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": {
+        "orientation": "horizontal",
+        "xTickLabelRotation": 0,
+        "legend": { "displayMode": "list", "placement": "bottom" }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Duplicate (idempotent no-op) events by consumer group",
+      "description": "Redelivery of an event a consumer group already processed — the idempotency guard from ADR 0005 turning it into a no-op instead of double-processing.",
+      "type": "barchart",
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "expr": "sum by (broker, consumer_group) (order_processing_events_total{outcome=\"duplicate\"})",
+          "legendFormat": "{{broker}} / {{consumer_group}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": {
+        "orientation": "horizontal",
+        "xTickLabelRotation": 0,
+        "legend": { "displayMode": "list", "placement": "bottom" }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Failed attempts by consumer group (retry → DLQ path)",
+      "description": "Only inventory-service ever produces these on purpose — see PoisonMessageAndReplayTest in both examples. Kafka retries in-process (DefaultErrorHandler); RabbitMQ retries via the TTL-delayed DLX queue (RabbitConfig) — ADR 0006 covers why the mechanisms differ even though this metric doesn't.",
+      "type": "barchart",
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 9 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "expr": "sum by (broker, consumer_group) (order_processing_events_total{outcome=\"failed\"})",
+          "legendFormat": "{{broker}} / {{consumer_group}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": {
+        "orientation": "horizontal",
+        "xTickLabelRotation": 0,
+        "legend": { "displayMode": "list", "placement": "bottom" }
+      }
+    },
+    {
+      "id": 4,
+      "title": "Total events processed, by broker",
+      "description": "The same workload run through both examples: same domain, same event, same three consumers — only the transport differs.",
+      "type": "stat",
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 9 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "expr": "sum by (broker) (order_processing_events_total{outcome=\"processed\"})",
+          "legendFormat": "{{broker}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "horizontal",
+        "textMode": "value_and_name",
+        "colorMode": "value",
+        "graphMode": "none"
+      }
+    }
+  ]
+}

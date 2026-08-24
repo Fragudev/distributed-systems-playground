@@ -20,16 +20,19 @@ public class InventoryEventListener {
 
   private final ProcessedEventRepository processedEventRepository;
   private final InventoryAvailabilityChecker availabilityChecker;
+  private final ProcessingMetrics metrics;
   private final ObjectMapper objectMapper;
   private final Clock clock;
 
   public InventoryEventListener(
       ProcessedEventRepository processedEventRepository,
       InventoryAvailabilityChecker availabilityChecker,
+      ProcessingMetrics metrics,
       ObjectMapper objectMapper,
       Clock clock) {
     this.processedEventRepository = processedEventRepository;
     this.availabilityChecker = availabilityChecker;
+    this.metrics = metrics;
     this.objectMapper = objectMapper;
     this.clock = clock;
   }
@@ -43,14 +46,17 @@ public class InventoryEventListener {
     // event more than once eventually (redelivery after a rebalance, a replay from the DLT, ...).
     // Checking first makes reprocessing a no-op instead of double-reserving inventory.
     if (processedEventRepository.existsById(id)) {
+      metrics.recordDuplicate(CONSUMER_GROUP);
       return;
     }
 
     if (!availabilityChecker.isAvailable()) {
+      metrics.recordFailed(CONSUMER_GROUP);
       throw new IllegalStateException("Inventory system unavailable for order " + event.orderId());
     }
 
     processedEventRepository.save(
         new ProcessedEvent(CONSUMER_GROUP, event.eventId(), Instant.now(clock)));
+    metrics.recordProcessed(CONSUMER_GROUP);
   }
 }
