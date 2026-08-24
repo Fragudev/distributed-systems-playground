@@ -8,9 +8,9 @@ Accepted
 and needs *something* to decide whether the order ends up `CONFIRMED` or `CANCELLED` once both have
 answered. There are two well-known shapes for this: **choreography** (each participant reacts to
 events on its own, no central authority) and **orchestration** (a central coordinator explicitly
-calls each participant and tells it what to do next). Per [A4 in the plan](../../02-distributed-systems-playground-PLAN.md),
-this example is deliberately the capstone — it reuses `kafka-order-processing`'s consumers rather
-than standing up new infrastructure, which shapes which option fits.
+calls each participant and tells it what to do next). Per the project's own planning notes, this
+example is deliberately the capstone — it reuses `kafka-order-processing`'s consumers rather than
+standing up new infrastructure, which shapes which option fits.
 
 ## Decision
 **Choreography.** `PaymentEventListener` and `InventoryEventListener` each subscribe to
