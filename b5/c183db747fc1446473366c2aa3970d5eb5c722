@@ -1,0 +1,145 @@
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/api/CreateOrderRequest.java
+  s_8ca842344072f2::t_36fdb54c897cec 1-9
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/api/OrderController.java
+  s_8ca842344072f2::t_94b27497e6d4a5 1-41
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/api/OrderLineRequest.java
+  s_8ca842344072f2::t_e91e6a07f77708 1-9
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/api/OrderLineResponse.java
+  s_8ca842344072f2::t_745f0e49667a6a 1-11
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/api/OrderResponse.java
+  s_8ca842344072f2::t_4355f0b4c20464 1-26
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/config/KafkaListenerConfig.java
+  s_8ca842344072f2::t_87c1a67ff3d355 1-26
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/config/KafkaTopicsConfig.java
+  s_f6c2719e97e037::t_e80ab9d2b2e2d6 1-47
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/inventory/InventoryAvailabilityChecker.java
+  s_8ca842344072f2::t_8cb29506177ee5 1-13
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/inventory/InventoryEventListener.java
+  s_8ca842344072f2::t_133c4bf7696472 1-105
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/inventory/InventoryOutcomePayload.java
+  s_8ca842344072f2::t_70b51a2e61ee43 1-9
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/inventory/InventoryReservation.java
+  s_8ca842344072f2::t_ba000d76b81414 1-60
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/notification/NotificationEventListener.java
+  s_8ca842344072f2::t_9f61cb3a1147c3 1-46
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/notification/NotificationLog.java
+  s_8ca842344072f2::t_d94c3f9988fd67 1-46
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/order/Order.java
+  s_8ca842344072f2::t_2988f4dbab71dc 1-108
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/order/OrderCancelledPayload.java
+  s_8ca842344072f2::t_c34fb3f78cbbab 1-11
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/order/OrderCreatedPayload.java
+  s_8ca842344072f2::t_885f26ef3c8142 1-21
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/order/OrderLine.java
+  s_8ca842344072f2::t_eaf0b256e990bb 1-60
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/order/OrderRepository.java
+  s_8ca842344072f2::t_a787286c5c87f7 1-6
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/order/OrderService.java
+  s_8ca842344072f2::t_474d7c7abe2a85 1-107
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/EventEnvelope.java
+  s_8ca842344072f2::t_e00472a2948c62 1-27
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/EventEnvelopeWriter.java
+  s_8ca842344072f2::t_03a47d899bb778 1-30
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/EventPublishException.java
+  s_8ca842344072f2::t_611e3333c7152a 1-8
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/EventPublisher.java
+  s_8ca842344072f2::t_d9330a582d27f1 1-10
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/EventTypes.java
+  s_8ca842344072f2::t_61510fc2c9873d 1-17
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/IncomingEvent.java
+  s_8ca842344072f2::t_2b5c3d3d0745f4 1-28
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/KafkaEventPublisher.java
+  s_8ca842344072f2::t_edea878b687238 1-32
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/OutboxEvent.java
+  s_8ca842344072f2::t_68eb383befa743 1-72
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/OutboxEventRepository.java
+  s_8ca842344072f2::t_4c1353a3f0dbe7 1-10
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/payment/Payment.java
+  s_8ca842344072f2::t_8ebb74d97306eb 1-69
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/payment/PaymentAuthorizer.java
+  s_8ca842344072f2::t_c0e1343f00d695 1-14
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/payment/PaymentEventListener.java
+  s_8ca842344072f2::t_f570c4d365923c 1-105
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/payment/PaymentOutcomePayload.java
+  s_8ca842344072f2::t_778fb0fcebfe23 1-9
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/payment/PaymentStatus.java
+  s_8ca842344072f2::t_0ba91c34210725 1-11
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/saga/SagaCoordinator.java
+  s_8ca842344072f2::t_63610952e36d1c 1-92
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/saga/SagaState.java
+  s_8ca842344072f2::t_82f507195400f8 1-104
+examples/saga-order-fulfillment/src/test/java/dev/fgutierrez/dsplayground/saga/saga/SagaCompensationTest.java
+  s_f6c2719e97e037::t_e202ececac42fb 1-72
+examples/saga-order-fulfillment/src/test/java/dev/fgutierrez/dsplayground/saga/saga/SagaHappyPathTest.java
+  s_8ca842344072f2::t_e37813994268e4 1-62
+examples/saga-order-fulfillment/src/test/java/dev/fgutierrez/dsplayground/saga/support/ControllableInventoryConfig.java
+  s_8ca842344072f2::t_4edbe0450d331d 1-40
+examples/saga-order-fulfillment/src/test/java/dev/fgutierrez/dsplayground/saga/support/PostgresAndKafkaIntegrationTest.java
+  s_8ca842344072f2::t_653f0de8b97786 1-34
+.github/workflows/ci.yml
+  s_8ca842344072f2::t_382d6f8c9496b8 63-73
+README.md
+  s_8ca842344072f2::t_3031b2d135d926 8,20
+docs/adr/0008-choreography-vs-orchestration.md
+  s_8ca842344072f2::t_6b6cd22ac7b5fe 1-64
+docs/adr/0009-eventual-consistency.md
+  s_8ca842344072f2::t_3c90a22f98ae38 1-51
+docs/diagrams/saga-order-fulfillment.md
+  s_8ca842344072f2::t_c2390cc5d54d20 1-43
+examples/saga-order-fulfillment/README.md
+  s_8ca842344072f2::t_458df002714142 1-134
+examples/saga-order-fulfillment/pom.xml
+  s_8ca842344072f2::t_5630a9d9879164 1-105
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/SagaOrderFulfillmentApplication.java
+  s_8ca842344072f2::t_f47c9786938545 1-21
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/inventory/AlwaysAvailableInventoryChecker.java
+  s_8ca842344072f2::t_21b8c9398f4645 1-14
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/inventory/InventoryReservationRepository.java
+  s_8ca842344072f2::t_b6e668c7ecd4fa 1-10
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/inventory/InventoryStatus.java
+  s_8ca842344072f2::t_ac2d2439c9b3c6 1-7
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/notification/NotificationLogRepository.java
+  s_8ca842344072f2::t_971eaf6f04c236 1-10
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/order/OrderStatus.java
+  s_8ca842344072f2::t_7c9e44053433bd 1-11
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/outbox/OutboxRelay.java
+  s_8ca842344072f2::t_df4d03f978d02a 1-57
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/payment/AlwaysApprovePaymentAuthorizer.java
+  s_8ca842344072f2::t_2095c28bc3cccf 1-14
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/payment/PaymentRepository.java
+  s_8ca842344072f2::t_0c526cb0b5228d 1-10
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/saga/SagaOutcome.java
+  s_8ca842344072f2::t_003159b94e46d4 1-6
+examples/saga-order-fulfillment/src/main/java/dev/fgutierrez/dsplayground/saga/saga/SagaStateRepository.java
+  s_8ca842344072f2::t_dcd0f9c9034815 1-6
+examples/saga-order-fulfillment/src/main/resources/application.yml
+  s_8ca842344072f2::t_a3ea84025a70c1 1-55
+examples/saga-order-fulfillment/src/main/resources/db/migration/V1__create_schema.sql
+  s_8ca842344072f2::t_def629ac59c5b4 1-66
+pom.xml
+  s_8ca842344072f2::t_9385b7fad3eeed 30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "b5c183db747fc1446473366c2aa3970d5eb5c722",
+  "prompts": {},
+  "sessions": {
+    "s_8ca842344072f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4db8a879-00ae-4699-b479-6c9220e502b3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_f6c2719e97e037": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d71cd04a-2491-4b09-8bc2-0e5b3c8eed55",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    }
+  }
+}
