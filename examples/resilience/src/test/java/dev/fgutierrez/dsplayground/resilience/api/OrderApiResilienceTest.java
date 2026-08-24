@@ -13,8 +13,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -30,9 +32,30 @@ import org.springframework.http.ResponseEntity;
  */
 class OrderApiResilienceTest extends PostgresIntegrationTest {
 
+  // Stays PER_METHOD (the default) rather than @TestInstance(PER_CLASS): PER_CLASS changes
+  // extension callback ordering enough that Testcontainers no longer reliably starts the static
+  // @Container in PostgresIntegrationTest before @DynamicPropertySource reads its mapped port —
+  // confirmed by a real ApplicationContext failure to load. This guard gets the same "exactly
+  // once" warm-up without touching the instance lifecycle.
+  private static final AtomicBoolean warmedUp = new AtomicBoolean(false);
+
   @Autowired private TestRestTemplate restTemplate;
   @Autowired private ShippingSimulator simulator;
   @Autowired private CircuitBreakerRegistry circuitBreakerRegistry;
+
+  // One throwaway call before the first real test, absorbing the bulkhead thread pool's cold
+  // start (thread creation, first-time AOP proxy/reflection resolution through Resilience4j)
+  // outside of any assertion. Without this, whichever test JUnit happens to run first pays that
+  // cost inline and can spuriously blow the 500ms time limiter on a loaded CI runner even in
+  // NORMAL mode, which never actually sleeps — a real flake this fixed, not a hypothetical one.
+  @BeforeEach
+  void warmUpShippingGatewayOnce() {
+    if (warmedUp.compareAndSet(false, true)) {
+      simulator.setMode(ShippingSimulator.Mode.NORMAL);
+      createOrder();
+      circuitBreakerRegistry.circuitBreaker("shipping").reset();
+    }
+  }
 
   @AfterEach
   void resetSharedState() {
