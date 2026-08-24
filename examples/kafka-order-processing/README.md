@@ -92,6 +92,8 @@ All three run against real Postgres and real Kafka via Testcontainers.
   a consumer group is hitting a class of message it can't process.
 - `kafka-ui` (started with this example's Compose profile) shows both the main topic and the DLT,
   plus per-group consumer lag, in real time.
+- See [docs/diagrams/kafka-vs-rabbitmq-dashboard.md](../../docs/diagrams/kafka-vs-rabbitmq-dashboard.md)
+  for the comparative Grafana dashboard this example and `rabbitmq-order-processing` both feed.
 
 ## 9. When not to use this pattern
 

@@ -1,0 +1,59 @@
+# Same shared-Postgres-instance rationale as the other examples: one schema each so their tables
+# never collide.
+spring:
+  application:
+    name: rabbitmq-order-processing
+  datasource:
+    url: jdbc:postgresql://localhost:${DSPLAYGROUND_POSTGRES_PORT:5432}/dsplayground
+    username: dsplayground
+    password: dsplayground
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        default_schema: rabbitmq_order_processing
+  flyway:
+    schemas: rabbitmq_order_processing
+    default-schema: rabbitmq_order_processing
+  mvc:
+    problemdetails:
+      enabled: true
+  rabbitmq:
+    # 127.0.0.1, not localhost: on this host "localhost" resolves to the IPv6 loopback first,
+    # which Docker's published port isn't listening on, and the RabbitMQ client doesn't fall back
+    # to IPv4 the way a browser would — same class of issue as Postgres/Kafka's Rancher Desktop
+    # networking quirks documented elsewhere in this repo, just surfacing differently here.
+    host: 127.0.0.1
+    port: ${DSPLAYGROUND_RABBITMQ_PORT:5672}
+    username: dsplayground
+    password: dsplayground
+    # The relay waits for these (RabbitEventPublisher#publish) before marking a row published —
+    # the RabbitMQ equivalent of blocking on the Kafka producer's send future.
+    publisher-confirm-type: correlated
+    listener:
+      simple:
+        # A plain exception from a listener must NOT be silently requeued onto the same queue —
+        # that would loop forever instead of going through RabbitConfig's DLX/retry chain.
+        default-requeue-rejected: false
+
+server:
+  port: 8084
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
+  otlp:
+    metrics:
+      export:
+        url: http://localhost:${DSPLAYGROUND_OTLP_HTTP_PORT:4318}/v1/metrics
+        step: 10s
+  metrics:
+    tags:
+      broker: rabbitmq

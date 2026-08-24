@@ -1,10 +1,10 @@
-package dev.fgutierrez.dsplayground.kafkaorders.order;
+package dev.fgutierrez.dsplayground.rabbitmqorders.order;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.fgutierrez.dsplayground.kafkaorders.outbox.EventEnvelope;
-import dev.fgutierrez.dsplayground.kafkaorders.outbox.OutboxEvent;
-import dev.fgutierrez.dsplayground.kafkaorders.outbox.OutboxEventRepository;
+import dev.fgutierrez.dsplayground.rabbitmqorders.outbox.EventEnvelope;
+import dev.fgutierrez.dsplayground.rabbitmqorders.outbox.OutboxEvent;
+import dev.fgutierrez.dsplayground.rabbitmqorders.outbox.OutboxEventRepository;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.List;

@@ -11,13 +11,14 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>outbox</artifactId>
+  <artifactId>rabbitmq-order-processing</artifactId>
   <packaging>jar</packaging>
 
-  <name>Transactional Outbox</name>
+  <name>RabbitMQ Order Processing</name>
   <description>
-    Scenario B: an order creation publishes an event. Demonstrates the transactional outbox
-    pattern against the naive dual-write it replaces, event schema, and at-least-once delivery.
+    Same domain and outbox as kafka-order-processing, over RabbitMQ: exchanges/queues instead of
+    topics/partitions, native DLX+TTL retry instead of manual retry topics — the direct comparison
+    ADR 0007 is built on.
   </description>
 
   <dependencies>
@@ -38,8 +39,12 @@
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.kafka</groupId>
-      <artifactId>spring-kafka</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-amqp</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-registry-otlp</artifactId>
     </dependency>
     <dependency>
       <groupId>org.flywaydb</groupId>
@@ -72,7 +77,12 @@
     </dependency>
     <dependency>
       <groupId>org.testcontainers</groupId>
-      <artifactId>kafka</artifactId>
+      <artifactId>rabbitmq</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
