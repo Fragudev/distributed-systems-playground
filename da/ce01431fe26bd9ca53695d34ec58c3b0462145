@@ -1,0 +1,95 @@
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/api/ApiExceptionHandler.java
+  s_8ca842344072f2::t_0dd24e5cd67fa7 1-23
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/api/CreateOrderRequest.java
+  s_8ca842344072f2::t_0818f1845139a0 1-9
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/api/OrderLineRequest.java
+  s_8ca842344072f2::t_a441ce968541de 1-9
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/api/OrderLineResponse.java
+  s_8ca842344072f2::t_a921dd70d84628 1-11
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/api/OrderResponse.java
+  s_f6c2719e97e037::t_5eb293ef6a3374 1-34
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/order/Order.java
+  s_8ca842344072f2::t_bead773e508dee 1-94
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/order/OrderLine.java
+  s_8ca842344072f2::t_347973772959ed 1-64
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/order/OrderNotFoundException.java
+  s_8ca842344072f2::t_413f0f781edd13 1-17
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/order/OrderRepository.java
+  s_8ca842344072f2::t_241d628f51d891 1-6
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/order/OrderService.java
+  s_8ca842344072f2::t_532b25f2828673 1-34
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/order/OrderStatus.java
+  s_8ca842344072f2::t_f0ef1dcd0e3742 1-10
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/shipping/NaiveShippingGateway.java
+  s_8ca842344072f2::t_1c8d5dbb842287 1-30
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/shipping/ShippingAdminController.java
+  s_8ca842344072f2::t_d8429b2cb98b59 1-35
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/shipping/ShippingCarrierUnavailableException.java
+  s_d3b0395f3147e5::t_63680180b0acca 1-10
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/shipping/ShippingSimulator.java
+  s_8ca842344072f2::t_7bbdc80ac09598 1-60
+examples/resilience/src/main/resources/application.yml
+  s_f6c2719e97e037::t_4a2ff9edc75c87 1-70
+examples/resilience/src/test/java/dev/fgutierrez/dsplayground/resilience/api/OrderApiResilienceTest.java
+  s_8ca842344072f2::t_de17cca60ac8a1 1-134
+examples/resilience/src/test/java/dev/fgutierrez/dsplayground/resilience/shipping/NaiveShippingGatewayFailureTest.java
+  s_8ca842344072f2::t_6b199e0a9b3f8e 1-32
+.github/workflows/ci.yml
+  s_8ca842344072f2::t_d0897e1e48b06b 52-62
+README.md
+  s_8ca842344072f2::t_3d54136d2b7770 8,19
+docs/diagrams/resilience.md
+  s_8ca842344072f2::t_8864e1a3f5902c 1-54
+examples/resilience/README.md
+  s_8ca842344072f2::t_82f86071e95dce 1-140
+examples/resilience/pom.xml
+  s_8ca842344072f2::t_3252cf36c56b7e 1-104
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/ResilienceApplication.java
+  s_8ca842344072f2::t_10ed43f84c0d1f 1-19
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/api/OrderController.java
+  s_8ca842344072f2::t_b67f60a85ba0ba 1-51
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/shipping/ResilientShippingGateway.java
+  s_8ca842344072f2::t_4076a892628bad 1-46
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/shipping/ShippingConfirmation.java
+  s_8ca842344072f2::t_88e5ebe6009137 1-22
+examples/resilience/src/main/java/dev/fgutierrez/dsplayground/resilience/shipping/ShippingGateway.java
+  s_8ca842344072f2::t_693e75543ddc1f 1-9
+examples/resilience/src/main/resources/db/migration/V1__create_schema.sql
+  s_8ca842344072f2::t_02432c7c9139ff 1-17
+examples/resilience/src/test/java/dev/fgutierrez/dsplayground/resilience/support/PostgresIntegrationTest.java
+  s_8ca842344072f2::t_dc85d78d521b2b 1-24
+pom.xml
+  s_8ca842344072f2::t_a8113c7512e41b 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "dace01431fe26bd9ca53695d34ec58c3b0462145",
+  "prompts": {},
+  "sessions": {
+    "s_8ca842344072f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4db8a879-00ae-4699-b479-6c9220e502b3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_d3b0395f3147e5": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a032a8-c9b9-7044-ad08-38334264f6cb",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_f6c2719e97e037": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d71cd04a-2491-4b09-8bc2-0e5b3c8eed55",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    }
+  }
+}
