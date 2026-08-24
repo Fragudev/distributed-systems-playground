@@ -5,7 +5,7 @@ over a shared, generic order-processing domain. Built as technical portfolio evi
 Design interview preparation — each example is meant to answer *why the pattern exists*, not just
 *how to implement it*.
 
-Status: **5 of 6 examples done.** See [docs/adr](docs/adr) for the decisions behind this structure and
+Status: **6 of 6 examples done.** See [docs/adr](docs/adr) for the decisions behind this structure and
 the planning document that preceded it.
 
 ## Examples
@@ -17,7 +17,7 @@ the planning document that preceded it.
 | [kafka-order-processing](examples/kafka-order-processing) | Consumer groups (fan-out), partitioning, idempotency, retry/backoff, DLT, replay | ✅ done |
 | [rabbitmq-order-processing](examples/rabbitmq-order-processing) | Same domain over exchanges/queues, native DLX/TTL — direct comparison with Kafka | ✅ done |
 | [resilience](examples/resilience) | Circuit breaker, bulkhead, timeout, graceful degradation — no broker | ✅ done |
-| saga-order-fulfillment | Choreography-based saga, compensation, eventual consistency | planned |
+| [saga-order-fulfillment](examples/saga-order-fulfillment) | Choreography-based saga, compensation, eventual consistency | ✅ done |
 
 `kafka-order-processing` and `rabbitmq-order-processing` both feed a comparative Grafana dashboard
 with real, side-by-side data — see

@@ -27,6 +27,7 @@
     <module>examples/kafka-order-processing</module>
     <module>examples/rabbitmq-order-processing</module>
     <module>examples/resilience</module>
+    <module>examples/saga-order-fulfillment</module>
   </modules>
 
   <properties>
