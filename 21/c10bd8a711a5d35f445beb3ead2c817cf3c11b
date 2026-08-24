@@ -1,0 +1,177 @@
+README.md
+  s_f89c323fa774a3::t_4091935ca8b160 8,18,22-26,51
+docker-compose.yml
+  s_8ac6eba72386ed::t_2bef25db5ccbd6 70-75,92-96
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/ProcessingMetrics.java
+  s_8ca842344072f2::t_53f7f0029c7e9e 1-40
+examples/rabbitmq-order-processing/pom.xml
+  s_3a9e59ba6b6add::t_8472851317fccf 1-105
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/RabbitmqOrderProcessingApplication.java
+  s_e577fdee5c4603::t_484efb7d9f3c0c 1-21
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/api/CreateOrderRequest.java
+  s_8ca842344072f2::t_2bf6f637c92827 1-9
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/api/OrderController.java
+  s_8ca842344072f2::t_ac226e5bd66c94 1-41
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/api/OrderLineRequest.java
+  s_8ca842344072f2::t_0d2b9093ac3f8c 1-9
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/api/OrderLineResponse.java
+  s_8ca842344072f2::t_6c4804934c9617 1-11
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/api/OrderResponse.java
+  s_8ca842344072f2::t_ddf17ec24edb4d 1-26
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/config/RabbitConfig.java
+  s_8ca842344072f2::t_7fe985ad52f073 1-103
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/AlwaysAvailableInventoryChecker.java
+  s_8ca842344072f2::t_a03c5c09f05924 1-12
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/IncomingOrderCreatedEvent.java
+  s_8ca842344072f2::t_0b7cd686886deb 1-24
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/InventoryAvailabilityChecker.java
+  s_8ca842344072f2::t_337420d1d3bd41 1-12
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/ProcessedEvent.java
+  s_8ca842344072f2::t_5369a02a65157a 1-38
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/ProcessedEventId.java
+  s_8ca842344072f2::t_b5152463f715a6 1-45
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/ProcessedEventRepository.java
+  s_8ca842344072f2::t_210e272a89fc24 1-10
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/ProcessingMetrics.java
+  s_8ca842344072f2::t_786352716e41ab 1-40
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/order/Order.java
+  s_8ca842344072f2::t_184089e0f313c9 1-92
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/order/OrderCreatedPayload.java
+  s_8ca842344072f2::t_37ebcf2ff81362 1-21
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/order/OrderLine.java
+  s_8ca842344072f2::t_7182dd6eed7041 1-60
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/order/OrderRepository.java
+  s_8ca842344072f2::t_254acbcae49ec3 1-6
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/order/OrderService.java
+  s_e577fdee5c4603::t_024ad84d600adf 1-66
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/order/OrderStatus.java
+  s_8ca842344072f2::t_3aaca30b92fe4a 1-9
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/outbox/EventEnvelope.java
+  s_8ca842344072f2::t_63d3a016e7e454 1-25
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/outbox/OutboxEventRepository.java
+  s_404c5ea073f7bb::t_eef6b27846e3ee 1-10
+examples/rabbitmq-order-processing/src/main/resources/db/migration/V1__create_schema.sql
+  s_064640549cd5ed::t_b315b76cbaaf49 1-36
+examples/rabbitmq-order-processing/src/test/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/FanOutTest.java
+  s_8ca842344072f2::t_e74ddf1a29ceaa 1-103
+examples/rabbitmq-order-processing/src/test/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/PoisonMessageAndReplayTest.java
+  s_8ca842344072f2::t_376fc8596ff146 1-115
+observability/grafana/dashboards/kafka-vs-rabbitmq.json
+  s_8ac6eba72386ed::t_210a3b26281231 1-102
+.github/workflows/ci.yml
+  s_8ca842344072f2::t_d720a2b85fd250 41-51
+docs/adr/0006-retry-dlq-strategy.md
+  s_8ca842344072f2::t_d3365fa7920231 1-51
+docs/adr/0007-kafka-vs-rabbitmq.md
+  s_8ca842344072f2::t_15fbe00d15d30e 1-45
+docs/diagrams/kafka-vs-rabbitmq-dashboard.md
+  s_8ca842344072f2::t_0531f30b884dc7 1-37
+docs/diagrams/rabbitmq-order-processing.md
+  s_8ca842344072f2::t_4176ad6cc5047b 1-41
+examples/kafka-order-processing/README.md
+  s_8ca842344072f2::t_dce0e3fcbf36ca 95-96
+examples/kafka-order-processing/pom.xml
+  s_8ca842344072f2::t_24de584d0b2b1c 32-35,44-47
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/InventoryEventListener.java
+  s_8ca842344072f2::t_68b3f69ec40395 23,30,35,49,54,60
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/NotificationEventListener.java
+  s_8ca842344072f2::t_0aa71f6c206e63 20,25-28,30,40,45
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/consumer/PaymentEventListener.java
+  s_8ca842344072f2::t_15652910b70d0f 20,25-28,30,40,45
+examples/kafka-order-processing/src/main/java/dev/fgutierrez/dsplayground/kafkaorders/order/OrderService.java
+  s_8ca842344072f2::t_7c7d06a0fddebd 38-40
+examples/kafka-order-processing/src/main/resources/application.yml
+  s_8ca842344072f2::t_b0918c652403e1 44,48-55
+examples/outbox/pom.xml
+  s_8ca842344072f2::t_f8cb2d8d46b21c 32-35
+examples/rabbitmq-order-processing/README.md
+  s_8ca842344072f2::t_f209781a61e15f 1-102
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/InventoryEventListener.java
+  s_8ca842344072f2::t_7bca7e3898b8e6 1-102
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/NotificationEventListener.java
+  s_8ca842344072f2::t_032d3e77942452 1-47
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/consumer/PaymentEventListener.java
+  s_8ca842344072f2::t_b67a5cc0ecbd9e 1-48
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/outbox/EventPublishException.java
+  s_8ca842344072f2::t_c4a7dec07e385b 1-14
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/outbox/EventPublisher.java
+  s_8ca842344072f2::t_415259d36932cf 1-13
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/outbox/OutboxEvent.java
+  s_8ca842344072f2::t_68ed5d40e6f016 1-72
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/outbox/OutboxRelay.java
+  s_8ca842344072f2::t_cbb1452562dd46 1-47
+examples/rabbitmq-order-processing/src/main/java/dev/fgutierrez/dsplayground/rabbitmqorders/outbox/RabbitEventPublisher.java
+  s_8ca842344072f2::t_fe5874ee552e74 1-40
+examples/rabbitmq-order-processing/src/main/resources/application.yml
+  s_8ca842344072f2::t_ebfae123ab9368 1-59
+examples/rabbitmq-order-processing/src/test/java/dev/fgutierrez/dsplayground/rabbitmqorders/support/PostgresAndRabbitIntegrationTest.java
+  s_8ca842344072f2::t_41ebdc66768609 1-32
+observability/grafana/provisioning/kafka-vs-rabbitmq.yaml
+  s_8ca842344072f2::t_6bd60cbb57f5f4 1-8
+pom.xml
+  s_8ca842344072f2::t_93f29c2b4b27c4 28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "21c10bd8a711a5d35f445beb3ead2c817cf3c11b",
+  "prompts": {},
+  "sessions": {
+    "s_064640549cd5ed": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a03287-7390-7c55-82c1-4c4444b151fa",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_3a9e59ba6b6add": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a0328f-2119-7b5b-84a5-53d49d8ef1ea",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_404c5ea073f7bb": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a02a7a-a0bf-739c-a4d3-c3a3c3ca3fa5",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_8ac6eba72386ed": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a0329a-535d-710e-b545-dd3165a4e099",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_8ca842344072f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4db8a879-00ae-4699-b479-6c9220e502b3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_e577fdee5c4603": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b2a8b81d-b9cc-416d-a896-92bb0819968b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    },
+    "s_f89c323fa774a3": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a0329e-8878-7e1e-b6b5-20fc717f1a23",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    }
+  }
+}
