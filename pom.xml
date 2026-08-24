@@ -26,6 +26,7 @@
     <module>examples/outbox</module>
     <module>examples/kafka-order-processing</module>
     <module>examples/rabbitmq-order-processing</module>
+    <module>examples/resilience</module>
   </modules>
 
   <properties>
