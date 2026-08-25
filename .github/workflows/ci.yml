@@ -6,6 +6,21 @@ on:
   pull_request:
 
 jobs:
+  # Every example README links to its diagrams and ADRs by relative path, and the ADR index links to
+  # every record. Those links are the navigation this repository's documentation actually relies on,
+  # and a renamed file breaks them silently — so they get checked rather than trusted. Cheap enough
+  # to run alongside six Maven builds without noticing it.
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Markdown links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: "yes"
+          use-verbose-mode: "yes"
+          config-file: ".github/workflows/markdown-link-check-config.json"
+
   synchronous-processing:
     runs-on: ubuntu-latest
     steps:
