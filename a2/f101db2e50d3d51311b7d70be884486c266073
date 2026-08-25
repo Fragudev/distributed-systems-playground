@@ -1,0 +1,23 @@
+docs/adr/README.md
+  s_222fea55b82233::t_4dbc8e28b1c7d2 14
+README.md
+  s_222fea55b82233::t_76d1d2be9b092c 20
+docs/adr/0010-resilience-pattern-composition.md
+  s_222fea55b82233::t_ccc4185cbc64b4 1-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a2f101db2e50d3d51311b7d70be884486c266073",
+  "prompts": {},
+  "sessions": {
+    "s_222fea55b82233": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9814de7e-05c3-45d9-8870-f7d6c297ac89",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    }
+  }
+}
