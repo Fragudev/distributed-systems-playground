@@ -11,6 +11,7 @@
 | [0007](0007-kafka-vs-rabbitmq.md) | Kafka vs RabbitMQ for this domain | Accepted |
 | [0008](0008-choreography-vs-orchestration.md) | Choreography vs orchestration for the saga | Accepted |
 | [0009](0009-eventual-consistency.md) | What "eventual consistency" actually guarantees here | Accepted |
+| [0010](0010-resilience-pattern-composition.md) | Composing three resilience patterns around one synchronous dependency | Accepted |
 
 Each record follows Status → Context → Decision → Alternatives considered → Consequences (0002 adds
 a short Rationale; 0007 compares two brokers rather than deciding between alternatives, so it uses

@@ -17,7 +17,7 @@ Each row answers the question that example exists to defend in a System Design i
 | [outbox](examples/outbox) | How do you write to your own database and publish an event as one atomic unit, without a distributed transaction? | Transactional outbox vs. broken dual-write, at-least-once delivery | [0002](docs/adr/0002-duplicated-domain.md), [0003](docs/adr/0003-transactional-outbox.md) |
 | [kafka-order-processing](examples/kafka-order-processing) | How do multiple independent services each react to the same event, safely handle redelivery, and recover from a message that can never succeed? | Consumer groups (fan-out), partitioning, idempotency, retry/backoff, DLT, replay | [0004](docs/adr/0004-at-least-once-delivery.md), [0005](docs/adr/0005-idempotent-consumers.md), [0006](docs/adr/0006-retry-dlq-strategy.md) |
 | [rabbitmq-order-processing](examples/rabbitmq-order-processing) | Same guarantees as Kafka, over fundamentally different broker primitives — what actually differs, concretely? | Exchanges/queues, native DLX/TTL — direct comparison with Kafka | [0004](docs/adr/0004-at-least-once-delivery.md), [0005](docs/adr/0005-idempotent-consumers.md), [0006](docs/adr/0006-retry-dlq-strategy.md), [0007](docs/adr/0007-kafka-vs-rabbitmq.md) |
-| [resilience](examples/resilience) | How does a service stay up when a downstream dependency is slow or down, without a broker in the picture at all? | Circuit breaker, bulkhead, timeout, graceful degradation | — |
+| [resilience](examples/resilience) | How does a service stay up when a downstream dependency is slow or down, without a broker in the picture at all? | Circuit breaker, bulkhead, timeout, graceful degradation | [0010](docs/adr/0010-resilience-pattern-composition.md) |
 | [saga-order-fulfillment](examples/saga-order-fulfillment) | How do independent services stay consistent with each other — and compensate correctly — with no distributed transaction spanning them? | Choreography-based saga, compensation, eventual consistency | [0008](docs/adr/0008-choreography-vs-orchestration.md), [0009](docs/adr/0009-eventual-consistency.md) |
 
 Status: all six done — see [docs/adr](docs/adr) for the full decision record and the planning
@@ -51,9 +51,16 @@ and runs the Spring Boot app. `./scripts/bootstrap.sh` checks Docker/Java prereq
 │   ├── templates/        the example-README template every example follows
 │   └── adr/              architecture decision records — see docs/adr/README.md for the index
 ├── observability/       Grafana dashboard + provisioning, mounted into the observability profile
-├── scripts/             bootstrap, run-example, inject-failure, replay-dlq
+├── scripts/             bootstrap, run-example, replay-dlq (+ inject-failure, a stub — see below)
 └── docker-compose.yml   one file, profile-gated per example
 ```
+
+`scripts/inject-failure.sh` is **scaffolding, not a working tool** — it exits non-zero for every
+example, and no example wires it up. Each example provokes its own failure scenario a different way,
+which is why a single generic entry point never earned its keep: `outbox` and `saga-order-fulfillment`
+force theirs from tests (`OutboxFailureTest`, `SagaCompensationTest`), and `resilience` exposes a
+live toggle at `POST /admin/shipping-simulator` (`NORMAL` / `SLOW` / `FAILING`). Named here rather
+than left looking runnable alongside three scripts that are.
 
 Why one example per directory instead of a single application: see
 [docs/adr/0001-repo-structure.md](docs/adr/0001-repo-structure.md). Why the order domain is
