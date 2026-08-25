@@ -51,9 +51,16 @@ and runs the Spring Boot app. `./scripts/bootstrap.sh` checks Docker/Java prereq
 │   ├── templates/        the example-README template every example follows
 │   └── adr/              architecture decision records — see docs/adr/README.md for the index
 ├── observability/       Grafana dashboard + provisioning, mounted into the observability profile
-├── scripts/             bootstrap, run-example, inject-failure, replay-dlq
+├── scripts/             bootstrap, run-example, replay-dlq (+ inject-failure, a stub — see below)
 └── docker-compose.yml   one file, profile-gated per example
 ```
+
+`scripts/inject-failure.sh` is **scaffolding, not a working tool** — it exits non-zero for every
+example, and no example wires it up. Each example provokes its own failure scenario a different way,
+which is why a single generic entry point never earned its keep: `outbox` and `saga-order-fulfillment`
+force theirs from tests (`OutboxFailureTest`, `SagaCompensationTest`), and `resilience` exposes a
+live toggle at `POST /admin/shipping-simulator` (`NORMAL` / `SLOW` / `FAILING`). Named here rather
+than left looking runnable alongside three scripts that are.
 
 Why one example per directory instead of a single application: see
 [docs/adr/0001-repo-structure.md](docs/adr/0001-repo-structure.md). Why the order domain is
