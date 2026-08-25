@@ -1,0 +1,21 @@
+.github/workflows/ci.yml
+  s_c7460127a0986d::t_b0f8f59d1ac540 9-23
+.github/workflows/markdown-link-check-config.json
+  s_c7460127a0986d::t_4f4304dd3bf48c 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "0b997365e7c114d786d8648bc2b869c6f2da4c40",
+  "prompts": {},
+  "sessions": {
+    "s_c7460127a0986d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_c7460127a0986d",
+        "model": "unknown"
+      },
+      "human_author": "Francis Gutiérrez <francisge@ext.inditex.com>"
+    }
+  }
+}
